@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div>
-    <h1>Random Password Generator</h1>
+    <h1>Random Password Generator {{ newPassword }}</h1>
     <hr>
     <div>
       <form action="/passwordGenerator" method="get">
@@ -52,6 +52,13 @@
             <div id="excludeHelp" class="form-text">These characters will not appear in the password</div>
           </div>
         </div>
+
+        {{#if newPassword}}
+        <div class="d-flex justify-content-between bg-success">
+          <p> Your Password is : {{ newPassword }}</p>
+        </div>
+        {{/if}}
+
         <button type="submit" class="btn btn-primary">Generate Password</button>
       </form>
     </div>

@@ -3,29 +3,30 @@ const { engine } = require('express-handlebars')
 const app = express()
 const port = 3000
 
+const outside = require('./generate_password.js')
 //
 app.engine('.hbs', engine({extname: '.hbs'}))
 app.set('view engine', 'hbs')
 app.set('views', './views')
 
-app.use(express.json()); // Used to parse JSON bodies
-app.use(express.urlencoded()); // Parse URL-encoded bodies using query-string library
-// or
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies using qs library
-
 //使用靜態資料
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.redirect('/passwordGenerator')
+  res.render('index')
 })
 
 //產生密碼route
 app.get('/passwordGenerator', (req, res) => {
-  //console.log(req.body)
-  res.render('index')
+  const passwordLength = req.query.passwordLength
+  const lowercase = req.query.lowercaseCharacters
+  const uppercase = req.query.uppercaseCharacters
+  const numbers = req.query.numbers
+  const symbols = req.query.symbols
+  const excludeCharacters = req.query.excludeCharacters
+  const newPassword = outside.showinfo(passwordLength, lowercase, uppercase, numbers, symbols, excludeCharacters)
+  res.render('index', { newPassword })
 })
-
 
 
 //啟動監聽
