@@ -3,11 +3,11 @@
     <h1>Random Password Generator</h1>
     <hr>
     <div>
-      <form action="/passwordGenerator" method="get">
+      <form action="/passwordGenerator" method="post">
         <div class="mb-3 d-flex justify-content-between m-2 p-2">
           <label for="passwordLength" class="form-label align-self-center">Password Length</label>
           <div>
-            <input type="number" class="form-control" min="4" max="16" id="passwordLength" name="passwordLength"
+            <input type="number" class="form-control" min="4" max="16" id="passwordLength" name="passwordLength" value=""
               aria-describedby="lengthHelp">
             <div id="lengthHelp" class="form-text">Length is available between 4 ~ 16</div>
           </div>
@@ -16,7 +16,7 @@
         <div class="mb-3 d-flex justify-content-between m-2 p-2">
           <label for="lowercaseCharacters" class="form-label">Include Lowercase Characters</label>
           <div>
-            <input type="checkbox" class="form-check-input" id="lowercaseCharacters" name="lowercaseCharacters">
+            <input type="checkbox" class="form-check-input" id="lowercaseCharacters" name="lowercaseCharacters" >
           <label class="form-check-label" for="lowercaseCharacters">(e.g. abcdefg)</label>
           </div>
         </div>

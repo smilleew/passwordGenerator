@@ -2,8 +2,13 @@ const express = require('express')
 const { engine } = require('express-handlebars')
 const app = express()
 const port = 3000
-
+//外部函式
 const outside = require('./generate_password.js')
+
+//express可以讀取form
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
 //
 app.engine('.hbs', engine({extname: '.hbs'}))
 app.set('view engine', 'hbs')
@@ -17,15 +22,12 @@ app.get('/', (req, res) => {
 })
 
 //產生密碼route
-app.get('/passwordGenerator', (req, res) => {
-  const passwordLength = req.query.passwordLength
-  const lowercase = req.query.lowercaseCharacters
-  const uppercase = req.query.uppercaseCharacters
-  const numbers = req.query.numbers
-  const symbols = req.query.symbols
-  const excludeCharacters = req.query.excludeCharacters
-  const newPassword = outside.showinfo(passwordLength, lowercase, uppercase, numbers, symbols, excludeCharacters)
-  res.render('index', { newPassword })
+app.post('/passwordGenerator', (req, res) => {
+  //讀取form資料
+  const formValues = req.body
+  //使用外部函式產生password
+  const newPassword = outside.showinfo(formValues)
+  res.render('index', { newPassword, formValues })
 })
 
 

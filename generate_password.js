@@ -3,36 +3,36 @@ const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 const number = '0123456789'
 const symbol = '`~!@$%^&*()-={}[]|;:"<>,.?/'
 
-const showinfo = function (length, lowercase, uppercase, numbers, symbols, excludeCharacters) {
+const showinfo = function (formValues) {
   let collection = []
   let newpassword = ''
 
-  if (lowercase === 'on') {
+  if (formValues.lowercaseCharacters === 'on') {
     collection = collection.concat(...lower)
   } 
 
-  if (uppercase === 'on') {
+  if (formValues.uppercaseCharacters === 'on') {
     collection = collection.concat(...upper)
   }  
 
-  if (numbers === 'on') {
+  if (formValues.numbers === 'on') {
     collection = collection.concat(...number)
   }  
 
-  if (symbols === 'on') {
+  if (formValues.symbols === 'on') {
     collection = collection.concat(...symbol)
   }
 
-  if (excludeCharacters) {
+  if (formValues.excludeCharacters) {
     collection = collection.filter(character => {
-      if (excludeCharacters.includes(character)) {
+      if (formValues.excludeCharacters.includes(character)) {
         return false
       }
       return true
     })
   }
 
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < formValues.passwordLength; i++) {
     const index = Math.floor(Math.random() * collection.length)
     newpassword += collection[index]
   }
