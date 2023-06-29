@@ -3,7 +3,12 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-  res.send('express app for password')
+  res.redirect('/passwordGenerator')
+})
+
+//產生密碼route
+app.get('/passwordGenerator', (req, res) => {
+  res.send('generate password')
 })
 
 app.listen(port, () => {
