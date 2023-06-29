@@ -23,6 +23,15 @@ const showinfo = function (length, lowercase, uppercase, numbers, symbols, exclu
     collection = collection.concat(...symbol)
   }
 
+  if (excludeCharacters) {
+    collection = collection.filter(character => {
+      if (excludeCharacters.includes(character)) {
+        return false
+      }
+      return true
+    })
+  }
+
   for (let i = 0; i < length; i++) {
     const index = Math.floor(Math.random() * collection.length)
     newpassword += collection[index]
