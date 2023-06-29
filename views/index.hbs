@@ -1,1 +1,59 @@
-<h1>Example App: Home</h1>
+<div class="d-flex justify-content-center">
+  <div>
+    <h1>Random Password Generator</h1>
+    <hr>
+    <div>
+      <form action="/passwordGenerator" method="get">
+        <div class="mb-3 d-flex justify-content-between m-2 p-2">
+          <label for="passwordLength" class="form-label align-self-center">Password Length</label>
+          <div>
+            <input type="number" class="form-control" min="4" max="16" id="passwordLength" name="passwordLength"
+              aria-describedby="lengthHelp">
+            <div id="lengthHelp" class="form-text">Length is available between 4 ~ 16</div>
+          </div>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-between m-2 p-2">
+          <label for="lowercaseCharacters" class="form-label">Include Lowercase Characters</label>
+          <div>
+            <input type="checkbox" class="form-check-input" id="lowercaseCharacters" name="lowercaseCharacters">
+          <label class="form-check-label" for="lowercaseCharacters">(e.g. abcdefg)</label>
+          </div>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-between m-2 p-2">
+          <label for="uppercaseCharacters" class="form-label">Include Uppercase Characters</label>
+          <div>
+            <input type="checkbox" class="form-check-input" id="uppercaseCharacters" name="uppercaseCharacters">
+            <label class="form-check-label" for="uppercaseCharacters">(e.g. ABCDEFG)</label>
+          </div>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-between m-2 p-2">
+          <label for="numbers" class="form-label">Include Numbers</label>
+          <div>
+            <input type="checkbox" class="form-check-input" id="numbers" name="numbers">
+            <label class="form-check-label" for="numbers">(e.g. 123456)</label>
+          </div>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-between m-2 p-2">
+          <label for="symbols" class="form-label">Include Symbols</label>
+          <div>
+            <input type="checkbox" class="form-check-input" id="symbols" name="symbols">
+            <label class="form-check-label" for="symbols">(e.g. @#$%)</label>
+          </div>
+        </div>
+        
+        <div class="mb-3 d-flex justify-content-between m-2 p-2">
+          <label for="excludeCharacters" class="form-label">Exclude Characters</label>
+          <div>
+            <input type="text" class="form-control" id="excludeCharacters" name="excludeCharacters" aria-describedby="excludeHelp">
+            <div id="excludeHelp" class="form-text">These characters will not appear in the password</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Password</button>
+      </form>
+    </div>
+  </div>
+</div>
