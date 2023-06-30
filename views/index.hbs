@@ -1,65 +1,66 @@
-<div class="d-flex justify-content-center">
-  <div>
+<div class="d-flex justify-content-center bg-secondary p-2">
+  <div class="border rounded bg-white mt-3" style="width: 60%">
     <h1>Random Password Generator</h1>
     <hr>
-    <div>
+    <div class="container">
       <form action="/passwordGenerator" method="post">
-        <div class="mb-3 d-flex justify-content-between m-2 p-2">
-          <label for="passwordLength" class="form-label align-self-center">Password Length</label>
-          <div>
+        <div class="mb-3 row m-2 p-2">
+          <label for="passwordLength" class="form-label align-self-center col-4">Password Length</label>
+          <div class="col-8">
             <input type="number" class="form-control" min="4" max="16" id="passwordLength" name="passwordLength" value="{{ formValues.passwordLength }}"
               aria-describedby="lengthHelp">
             <div id="lengthHelp" class="form-text">Length is available between 4 ~ 16</div>
           </div>
         </div>
 
-        <div class="mb-3 d-flex justify-content-between m-2 p-2">
-          <label for="lowercaseCharacters" class="form-label">Include Lowercase Characters</label>
-          <div>
+        <div class="mb-3 row m-2 p-2">
+          <label for="lowercaseCharacters" class="form-label col-4">Include Lowercase Characters</label>
+          <div class="col-8">
             <input type="checkbox" class="form-check-input" id="lowercaseCharacters" name="lowercaseCharacters" {{#if formValues.lowercaseCharacters}} checked {{/if}}>
           <label class="form-check-label" for="lowercaseCharacters">(e.g. abcdefg)</label>
           </div>
         </div>
 
-        <div class="mb-3 d-flex justify-content-between m-2 p-2">
-          <label for="uppercaseCharacters" class="form-label">Include Uppercase Characters</label>
-          <div>
+        <div class="mb-3 row m-2 p-2">
+          <label for="uppercaseCharacters" class="form-label col-4">Include Uppercase Characters</label>
+          <div class="col-8">
             <input type="checkbox" class="form-check-input" id="uppercaseCharacters" name="uppercaseCharacters" {{#if formValues.uppercaseCharacters}} checked {{/if}}>
             <label class="form-check-label" for="uppercaseCharacters">(e.g. ABCDEFG)</label>
           </div>
         </div>
 
-        <div class="mb-3 d-flex justify-content-between m-2 p-2">
-          <label for="numbers" class="form-label">Include Numbers</label>
-          <div>
+        <div class="mb-3 row m-2 p-2">
+          <label for="numbers" class="form-label col-4">Include Numbers</label>
+          <div class="col-8">
             <input type="checkbox" class="form-check-input" id="numbers" name="numbers" {{#if formValues.numbers}} checked {{/if}}>
             <label class="form-check-label" for="numbers">(e.g. 123456)</label>
           </div>
         </div>
 
-        <div class="mb-3 d-flex justify-content-between m-2 p-2">
-          <label for="symbols" class="form-label">Include Symbols</label>
-          <div>
+        <div class="mb-3 row m-2 p-2">
+          <label for="symbols" class="form-label col-4">Include Symbols</label>
+          <div class="col-8">
             <input type="checkbox" class="form-check-input" id="symbols" name="symbols" {{#if formValues.symbols}} checked {{/if}}>
             <label class="form-check-label" for="symbols">(e.g. @#$%)</label>
           </div>
         </div>
         
-        <div class="mb-3 d-flex justify-content-between m-2 p-2">
-          <label for="excludeCharacters" class="form-label">Exclude Characters</label>
-          <div>
+        <div class="mb-3 row m-2 p-2">
+          <label for="excludeCharacters" class="form-label col-4">Exclude Characters</label>
+          <div class="col-8">
             <input type="text" class="form-control" id="excludeCharacters" name="excludeCharacters" aria-describedby="excludeHelp" value="{{ formValues.excludeCharacters }}">
             <div id="excludeHelp" class="form-text">These characters will not appear in the password</div>
           </div>
         </div>
 
         {{#if newPassword}}
-        <div class="d-flex justify-content-between bg-success">
-          <p> Your Password is : {{ newPassword }}</p>
+        <div class="d-flex bg-info m-2 p-2 border border-success rounded">
+          <span class="text-info-emphasis align-self-center">Your Password is : </span>
+          <span class="text-danger align-self-center"> {{ newPassword }}</span>
         </div>
         {{/if}}
 
-        <button type="submit" class="btn btn-primary">Generate Password</button>
+        <button type="submit" class="btn btn-primary mb-3">Generate Password</button>
       </form>
     </div>
   </div>
